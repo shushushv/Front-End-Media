@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./wasm_exec_tiny.js"></script>
+</head>
+<body>
+  <script>
+    const go = new Go(); // wasm_exec.js 中的定义
+    WebAssembly.instantiateStreaming(fetch('./main-tiny.wasm'), go.importObject)
+      .then(res => {
+        go.run(res.instance); // 执行 go main 方法
+      });
+
+    // fetch('./main-tiny.wasm')
+    //   .then(res => res.arrayBuffer())
+    //   .then(buffer => {
+    //     WebAssembly.instantiate(buffer, go.importObject)
+    //       .then(res => {
+    //         go.run(res.instance);
+    //       })
+    //   })
+  </script>
+</body>
+</html>
