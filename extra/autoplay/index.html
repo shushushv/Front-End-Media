@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>autoplay test</title>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
+  <style>
+    video {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    button {
+      margin: 10px 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <p>1. video.src="xx.mp4"</p>
+  <video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x-webkit-airplay="allow" muted id="video" loop></video>
+  <p>2. video.srcObject=stream</p>
+  <video playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x-webkit-airplay="allow" muted id="mediastream-video" loop></video>
+  <p>3. audio.src="xx.mp3"</p>
+  <audio playsinline webkit-playsinline loop></audio>
+  <!-- 分割线 -->
+  <hr>
+  <ul id="result"></ul>
+  <hr>
+  <button id="get-device-switch"></button>
+  <button id="play-btn-sync" disabled>click to play(sync)</button>
+  <button id="play-btn-async" disabled>click to play(async)</button>
+  <p id="ua" style="font-size: 12px;"></p>
+</body>
+<script type="module" src="./src/index.ts"></script>
+
+</html>
